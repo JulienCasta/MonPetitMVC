@@ -5,7 +5,6 @@
  * and open the template in the editor.
  */
 namespace Tools;
-
 /**
  * Description of MyTwig
  *
@@ -14,7 +13,7 @@ namespace Tools;
 abstract class MyTwig
 {
     
-    private function getLoader() {
+    private static function getLoader() {
         $loader = new \Twig_Loader_Filesystem(PATH_VIEW);
         return new \Twig_Environment($loader, array(
             'cache' => false

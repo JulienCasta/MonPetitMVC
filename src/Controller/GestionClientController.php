@@ -1,7 +1,5 @@
 <?php
-
 namespace APP\Controller;
-
 use APP\Model\GestionClientModel;
 use ReflectionClass;
 use \Exception;
@@ -15,7 +13,7 @@ class GestionClientController {
         $id = filter_var(intval($params["id"]), FILTER_VALIDATE_INT);
         $unClient = $modele->find($id);
         if ($unClient) {
-            $r = new ReflectionClass($this);
+            $r = new \ReflectionClass($this);
             $vue = str_replace('Controller', 'View', $r->getShortName()) . "/unClient.html.twig";
             MyTwig::afficheVue($vue, array('unClient' => $unClient));
         }else {
