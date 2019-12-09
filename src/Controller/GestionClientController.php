@@ -5,6 +5,7 @@ namespace APP\Controller;
 use APP\Model\GestionClientModel;
 use ReflectionClass;
 use \Exception;
+use Tools\MyTwig;
 
 class GestionClientController {
     
@@ -15,7 +16,8 @@ class GestionClientController {
         $unClient = $modele->find($id);
         if ($unClient) {
             $r = new ReflectionClass($this);
-            include_once PATH_VIEW . str_replace('Controller', 'View', $r->getShortName()) . "/unClient.php";
+            $vue = str_replace('Controller', 'View', $r->getShortName()) . "/unClient.html.twig";
+            MyTwig::afficheVue($vue, array('unClient' => $unClient));
         }else {
             throw new Exception("Client" . $id . " inconnu");
         }
